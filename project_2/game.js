@@ -3,6 +3,17 @@ var gameport = document.getElementById("gameport");
 var renderer = PIXI.autoDetectRenderer(400,400,{backgroundColor: 0xA9A9A9});
 gameport.appendChild(renderer.view);
 
+PIXI.loader.add("jonSounds.wav").load(ready);
+
+var jonSounds;
+
+function ready()
+{
+	jonSounds = PIXI.audioManager.getAudio("jonSounds.wav");
+	jonSounds.loop = true;
+	jonSounds.play();
+}
+
 var gameplay_screen = new PIXI.Container();
 var title_screen = new PIXI.Container();
 var credits_screen = new PIXI.Container();
