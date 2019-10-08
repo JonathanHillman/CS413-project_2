@@ -3,16 +3,7 @@ var gameport = document.getElementById("gameport");
 var renderer = PIXI.autoDetectRenderer(400,400,{backgroundColor: 0xA9A9A9});
 gameport.appendChild(renderer.view);
 
-PIXI.loader.add("jonSounds.wav").load(ready);
 
-var jonSounds;
-
-function ready()
-{
-	jonSounds = PIXI.audioManager.getAudio("jonSounds.wav");
-	jonSounds.loop = true;
-	jonSounds.play();
-}
 
 var gameplay_screen = new PIXI.Container();
 var title_screen = new PIXI.Container();
@@ -51,6 +42,7 @@ var credits_text2 = new PIXI.Text("Illustrations by:");
 var credits_text3 = new PIXI.Text("Jonathan Hillman");
 var credits_text4 = new PIXI.Text("Press escape to");
 var credits_text5 = new PIXI.Text("return to main screen");
+
 
 
 //make title screen and add sprites
@@ -223,6 +215,16 @@ credits_text5.position.y = 60;
 start_button.interactive = true;
 start_button.click = function() {
 current_stage = gameplay_screen;
+PIXI.loader.add("assets/jonSounds.wav").load(ready);
+
+var jonSounds;
+
+function ready()
+{
+	jonSounds = PIXI.audioManager.getAudio("assets/jonSounds.wav");
+	jonSounds.loop = true;
+	jonSounds.play();
+}
 }
 info_button.interactive = true;
 info_button.click = function() {
